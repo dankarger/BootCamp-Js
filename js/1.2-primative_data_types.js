@@ -62,8 +62,8 @@ var2 = "He's got it!";
 
 let bill= 100;
 let tax = 17/100;
-let needToPay ='Your total bill is ' + (bill + (bill * tax))+'$' ;
-console.log(needToPay)
+let needToPay2 = `Your total bill is ${bill+bill*tax}$`;
+console.log(needToPay2)
 
 
 // Round the number 50.6 to its nearest integer
