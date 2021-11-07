@@ -74,4 +74,8 @@ console.log(roundNum);
 //Create a variable that is undefined
 
 let undefinedVar = undefined;
+//or
+let undefinedVar2;
+
 console.log(undefinedVar);
+console.log(undefinedVar2)
