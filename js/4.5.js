@@ -10,8 +10,8 @@ function leapYear(year) {
 }
 
 console.log(leapYear(2024))
-//test
 
+//test
 for(let i=2000;i<=2050;i++) {
     console.log(`${i}- ${leapYear(i)}`)
 }
