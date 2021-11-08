@@ -39,14 +39,14 @@ console.log((function(a=4){
 // const squareRoot = a => Math.sqrt(a);
 
 (function(a=4){
-    return Math.sqrt(a)
+    console.log( Math.sqrt(a));
 })();
 
 
 const randomNumbers = (a, b) => Math.random() * (a - b) + b;
 
 (function(a=4,b=2){
-    return Math.random() * (a - b) + b;
+    console.log(Math.random() * (a - b) + b);
 })();
 
 
