@@ -15,4 +15,4 @@ function languageRank(language) {
     }
 }
 
-console.log(languageRank('hebrew'))
+console.log(languageRank('english'))
