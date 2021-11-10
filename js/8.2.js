@@ -9,4 +9,8 @@ const myCountry = {
     }
 }
 
+myCountry.checkIsland = function(){
+    return `${this.neighbours.length===0}`
+}
 console.log(myCountry.describe())
+console.log(myCountry.checkIsland())
