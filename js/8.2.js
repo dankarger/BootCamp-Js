@@ -10,7 +10,11 @@ const myCountry = {
 }
 
 myCountry.checkIsland = function(){
-    return `${this.neighbours.length===0}`
+    // return `${this.neighbours.length===0}`
+    this.isIsland = this.neighbours.length===0 ?'true':'false';
+    return this.isIsland;
 }
 console.log(myCountry.describe())
 console.log(myCountry.checkIsland())
+
+console.log(myCountry)
