@@ -10,6 +10,7 @@ function compareTwoStrings(a, b) {
             }
         }
     }
+    if(result.length===0){return false}
     return result;
 }
 
