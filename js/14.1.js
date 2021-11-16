@@ -1,4 +1,4 @@
-const numbers = [2,4,32,45,6,1];
+const numbers = [2,4,2,45,6,1];
 
 const maxNumbers = numbers.reduce((a,b)=>
       Math.max(a,b)
@@ -11,11 +11,13 @@ function findMax(arr) {
 }
 console.log(findMax(numbers))
 
-function sumArr(arr) {
-    return arr.reduce((a,b)=> a+b)
+function sumArrEven(arr) {
+   return  arr.filter(num=>(num%2===0)).reduce((a,b)=>
+    a+b)
 }
 
-console.log(sumArr(numbers))
+
+console.log('3' , sumArrEven(numbers))
 
 function averageNumbers(arr) {
     return arr.reduce((a,b)=>
