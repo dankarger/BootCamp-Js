@@ -1,19 +1,20 @@
 // block 1
 function funcA() {
+    var a = 1;
     console.log(a);
     console.log(foo());
-    var a = 1;
-
     function foo() {
         return 2;
     }
 }
 
 funcA();
+
 //result :
 //1
 //2
 //the var a is hoisted and can be console log before the declaration
+//fix: put the var a=1 in the begining of the func
 //<-------------------------------------------------------------------------------------->
 // block 2
 var fullName = 'John Doe';
@@ -28,30 +29,33 @@ var obj = {
 };
 
 console.log(obj.prop.getFullName());
-var test = obj.prop.getFullName;
-console.log(test());
+var test = obj.prop.getFullName();
+console.log(test);
 
 //<-------------------------------------------------------------------------------------->
 //Result:
 //> Aurelio De Rosa'
 //> function
-// thefirstconsolelog will point to the nearest scope of fullname  (inside the props obj)
+// the first console log will point to the nearest scope of fullname  (inside the props obj)
 //the second console log will show the function but not the function result, because the function is not activated
+console.log('//<-------------------------------------------------------------------------------------->\n')
 
 //block3
 
 function funcB() {
-    let a = b = 0;
+    var a = (b = 0);
+
     a++;
-    return a;
+    return a ;
 }
 
-funcB();
+a = funcB();
 console.log(typeof a);
 console.log(typeof b);
-
-//a is not defined, will print undefined
-//b in a number, will console log  'number'.
+console.log('//<-------------------------------------------------------------------------------------->\n')
+//a is not defined, will print undefined in the global scope,
+//b is also no defined in the global scope,
+//
 
 
 
@@ -79,6 +83,8 @@ funcC();
 //<-------------------------------------------------------------------------------------->
 
 // Block 5
+console.log(' 5: //<-------------------------------------------------------------------------------------->\n')
+
 function funcD1() {
     d = 1;
 }
@@ -88,13 +94,17 @@ console.log(d);
 
 function funcD2() {
     var e = 1;
+    console.log(e);
 }
 
 funcD2();
-console.log(e);
 
+
+//e is not defined , need to change it to console.log(d)
 //will return 'd is not defined'
 //will console log 1,
+//fix: move the console.log(e) inside the function
+console.log('6: //<-------------------------------------------------------------------------------------->\n')
 
 //<-------------------------------------------------------------------------------------->
 
