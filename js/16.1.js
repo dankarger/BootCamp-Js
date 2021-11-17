@@ -109,14 +109,16 @@ console.log('6: //<-------------------------------------------------------------
 //<-------------------------------------------------------------------------------------->
 
 // Block 6
+var f = 1;
 function funcE() {
-    console.log("Value of f in local scope: ", f);
+
+console.log("Value of f in local scope: ", f);
 }
 
 console.log("Value of f in global scope: ", f);
-var f = 1;
+
 funcE();
 
 //first will console log 'Value of f in local scope:  1'
 //then 'Value of f in global scope:  1'
-//because var is declared in the global scope
+//fix: need to movethe var f declaration to the top;
