@@ -102,6 +102,10 @@ function solution4(S) {
          openingTags.includes(el)?stacksOpen.push(el):stacksClosed.push(el);
     })
     let stackClose2= stacksClosed.reverse();
+    if(stacksClosed.length!==stacksOpen.length){
+        console.log('f')
+        return false
+    }
     stacksOpen.forEach((el,index)=>{
         // console.log(el,index)
         // console.log(stackClose2)
@@ -114,4 +118,4 @@ function solution4(S) {
     return valid;
 }
 
-console.log('4:',solution4('{[{()()}]}()'))
+console.log('4:',solution4('{[[{([])}]]}'))
