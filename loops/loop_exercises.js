@@ -276,3 +276,16 @@ function BeforeNumber(num) {
 }
 
 console.log('beforNumber', BeforeNumber(106549898))
+
+console.log('--------------17--------------------')
+
+function countIncrement(num) {
+    let arrNum =Array.from(String(num),Number);
+    for(let i = 0; i <arrNum.length;i++) {
+        if(arrNum[i]>arrNum[i+1]){
+            return false
+        }
+    }
+    return true
+}
+console.log('countIncriments', countIncrement(23456))
