@@ -164,4 +164,53 @@ function checkPassword(password) {
 console.log(checkPassword('TAda131313'));
 
 
-function
+console.log('--------------11--------------------');
+
+function isStrike(num) {
+    arrstr = Array.from(String(num), Number);
+    for(let i = arrstr.length-1;i>=0;i--){
+        if(arrstr[i]<arrstr[i-1]){
+            return false
+        }
+    }
+    return true
+}
+console.log('isStrike' ,isStrike(  455));
+
+
+console.log('--------------12--------------------')
+
+function aba(str) {
+     let arrStr = str.split('');
+     let arrStrReverse = arrStr.slice().reverse();
+
+     return arrStr.join()===arrStrReverse.join();
+
+}
+
+console.log('aba: ',aba('asddsa'))
+function aba2(str) {
+    let arrStr = str.split('');
+    for(let i =0, e =arrStr.length-1;i=>e;i++,e--){
+        console.log(e)
+    }
+
+}
+
+
+
+
+console.log('aba2: ',aba2('asddsa'))
+
+
+console.log('--------------13--------------------')
+
+function polyNum(num) {
+    let numArr = Array.from(String(num),Number);
+    let reverArr = numArr.slice().reverse();
+    return numArr.join()===reverArr.join()
+
+}
+console.log('polynum: ',polyNum(12321))
+
+console.log('--------------13--------------------')
