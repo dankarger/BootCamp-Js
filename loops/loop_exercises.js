@@ -202,7 +202,7 @@ console.log('aba: ', aba('asddsa'))
 
 function aba2(str) {
     let arrStr = str.split('');
-    for (let i = 0, e = arrStr.length - 1; i <arrStr.length; i++,e--) {
+    for (let i = 0, e = arrStr.length - 1; i < arrStr.length; i++, e--) {
         console.log(e)
         if (arrStr[i] !== arrStr[e]) {
             return false
@@ -227,4 +227,52 @@ function polyNum(num) {
 
 console.log('polynum: ', polyNum(12321))
 
-console.log('--------------13--------------------')
+console.log('--------------14--------------------')
+
+function countChar(str) {
+    let count = [1, 1]
+    for (let i = 0; i < str.length; i++) {
+        if (str[i] === str[i + 1]) {
+            count[0] += 1
+        } else {
+            if (count[0] > count[1]) {
+                count[1] = count[0];
+            }
+            count[0] = 1;
+        }
+    }
+    return count[1]
+}
+
+console.log('countChar: ', countChar('aassderrrr '))
+
+
+console.log('--------------15--------------------')
+
+function countBigAndSmall(str) {
+    let arrStr = str.split('');
+    let count = 0;
+    arrStr.forEach((letter, i) => {
+        if (letter === letter.toUpperCase()) {
+            arrStr[i + 1] === arrStr[i + 1].toLowerCase() ? count++ : null
+        }
+    })
+    return count;
+}
+
+console.log('countBigSmall:', countBigAndSmall('fRdTrfdfTfgDDyDdDg'))
+
+console.log('--------------16--------------------')
+
+function BeforeNumber(num) {
+    let count = 0;
+    let arrNum = Array.from(String(num), Number);
+    for (let i = arrNum.length - 1; i >= 0; i--) {
+        if (arrNum[i - 1] - arrNum[i] === 1) {
+            count++
+        }
+    }
+    return count
+}
+
+console.log('beforNumber', BeforeNumber(106549898))
