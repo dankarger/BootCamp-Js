@@ -13,16 +13,12 @@ function binarySearchForLoop(arr, n) {
         console.log('middle', arr[middle]);
         if (arr[middle] === n) {
             console.log('y')
-
             return index ;
         }
         if (arr[middle] < n) {
-            // console.log('<', middle);
-
             left = middle+1;
         }
         if (arr[middle] > n) {
-            // console.log('>', middle);
             right = middle;
         }
     }
@@ -85,10 +81,9 @@ function binaryRecursive2(arr,n,left=0,right=arr.length-1,index=Math.floor((arr.
         return binaryRecursive2(arr,n,left,right,index)
     }
 }
-const arr2 = [1, 3, 5, 8, 14,15,17];
 
+const arr2 = [1, 3, 5, 8, 14,15,17];
 console.log(binaryRecursive2(arr2,3))
 
 const arr3 = [0,1,2,3,4,5,6,7,8,9];
-
 console.log(binaryRecursive2(arr3,1))

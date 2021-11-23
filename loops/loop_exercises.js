@@ -112,3 +112,56 @@ function countAbcReduce(str) {
 console.log('7-2',countAbcReduce('this is a string'))
 
 console.log('--------------8--------------------');
+
+
+function  toUpper(str) {
+    let result = '';
+    let strArr = str.split(' ');
+    strArr.forEach(word=>{
+         let arr= word.split('')
+         arr.map(letter=>{
+            if (letter.charCodeAt() > 96 && letter.charCodeAt() < 123){
+              return  String.fromCharCode(letter & ~(1 << 5))
+            }
+        })
+    })
+    return result
+}
+
+console.log('test',toUpper('this'))
+console.log(toUpper('this is a test'))
+
+function toUpperCase(str) {
+    var asciiCode = str.charCodeAt(0);
+    for (let i = 0; i < str.length; i++) {
+        if (asciiCode > 96 && asciiCode < 123) {
+            // & ~(1 << 5) set the 6th bit to 1
+            return String.fromCharCode(asciiCode & ~(1 << 5));
+        } else {
+            return str;
+        }
+    }
+}
+console.log(toUpperCase('test'))
+
+
+console.log('--------------9--------------------');
+function checkEmail(email) {
+    let regex = /[@]/
+    return regex.test(email)
+}
+console.log(checkEmail('ffdfdf@fd.com'))
+
+
+console.log('--------------10--------------------');
+
+function checkPassword(password) {
+    let regex = /[[a-z]/g
+    let regex2 = /[A-Z][A-Z]/g
+    let regex3 =/[0-9][0-9][0-9]/g
+    return regex.test(password)&&regex2.test(password)&&regex3.test(password)
+}
+console.log(checkPassword('TAda131313'));
+
+
+function
