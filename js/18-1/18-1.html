@@ -1,0 +1,54 @@
+<!DOCTYPE html> <html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" /
+    >
+    <meta name="viewport" content="width=device-width,
+initial-scale=1.0" /> <title>Document</title>
+</head> <body>
+<h1>Header</h1>
+<p>Paragraph</p>
+<a href="#">link</a>
+<img src="" alt="" />
+<div class="x">Div with a class</div>
+<div id="y">Div with an id</div>
+<input type="text" />
+<input type="text" />
+<input type="text" /> </body>
+<script>
+<!--  1 - Without querySelector   -->
+const h1h1 = document.getElementsByTagName('h1');
+const pp = document.getElementsByTagName('p');
+const aa = document.getElementsByTagName('a');
+const image1 = document.getElementsByTagName('img');
+const divX = document.getElementsByClassName('x');
+const divY = document.getElementById('y');
+const inputs1 = document.getElementsByTagName('input');
+console.log(inputs1);
+
+console.log(h1h1)
+    //  2- with querySelector
+const header = document.querySelector('h1');
+const paragraph = document.querySelector('p');
+const aTag = document.querySelector('a');
+const image = document.querySelector('img');
+const x = document.querySelector('.x');
+const y = document.querySelector('#y');
+const inputs = document.querySelectorAll('input');
+console.log(header);
+console.log(paragraph);
+console.log(aTag);
+console.log(image);
+console.log(x);
+console.log(y);
+console.log(inputs);
+
+function iterrateInputs(){
+    inputs.forEach(input=>{
+        return console.log(input)
+    })
+    iterrateInputs()
+}
+
+</script>
+</html>
