@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>19.3</title>
+    <style>
+        body, .inputsSquares{
+            display:flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .code-div, .form1{
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .form1{
+            border:1px solid black;
+            padding:2rem;
+        }
+        .square {
+            height:20px;
+            width: 20px;
+            border:1px solid black;
+            margin:0.3rem;
+        }
+        button{
+            margin-top:2rem;
+        }
+    </style>
+</head>
+<body>
+<div class="code-div">
+    <h1>Text to copy:</h1>
+    <h2 class="code">1234567</h2>
+
+<form class="form1" onsubmit="validatePassword('test')">
+        <div class="inputsSquares">
+            <input   id="input1" type="text" class="square" maxlength="1"  oninput="validate(this)" onkeydown="back(this)">
+            <input    id="input2" type="text" class="square" maxlength="1" oninput="validate(this)" onkeydown="back(this)">
+            <input    id="input3" type="text" class="square" maxlength="1" oninput="validate(this)" onkeydown="back(this)">
+            <input    id="input4" type="text" class="square" maxlength="1" oninput="validate(this)" onkeydown="back(this)">
+            <input    id="input5" type="text" class="square" maxlength="1" oninput="validate(this)" onkeydown="back(this)">
+            <input    id="input6" type="text" class="square" maxlength="1" oninput="validate(this)" onkeydown="back(this)">
+
+
+        </div>
+        <button type="submit" onclick="validatePassword()">Verify</button>
+</form>
+</div>
+<script>
+    const form1 = document.querySelector('.form1')
+    let allInputs = document.querySelectorAll('.square')
+    let clipboard = window.clipboard
+    let data = ClipboardEvent.clipboardData
+    let submitButton = document.querySelector('button')
+    window.addEventListener('paste', (event) => {
+        let paste = (event.clipboardData || window.clipboardData ).getData('text');
+        let pasteString = paste.split('')
+        pasteString.forEach((char,index)=>{
+            if(index>0&&index<6) {
+                allInputs[index].value = parseInt(char)
+                console.log(paste[index])
+            }
+        })
+       submit()
+
+    })
+    function back(char) {
+        char.addEventListener('keydown', function (event) {
+            const key = event.key;
+            if (key === "Backspace") {
+                this.value=''
+                if(char.previousElementSibling) {
+                    let prevEl = char.previousElementSibling;
+                    prevEl.focus()
+                }
+            }
+
+        });
+    }
+    let password = []
+    function validate(char) {
+        let regex = /[0-9]/g
+        let key =  char.key;
+        console.log('keyk',key)
+        if(char.value==='Backspace')console.log('g')
+        if(!char.value.match(regex)){
+            char.value=''
+        }else{
+            if(char.nextElementSibling) {
+                let nextEl = char.nextElementSibling;
+                nextEl.focus()
+            }
+        }
+
+    }
+    function submit() {
+        let pass=''
+         allInputs.forEach(char=>{
+            pass+=char
+        })
+         console.log(pass)
+        // form1.submit()
+    }
+    function validatePassword(password) {
+
+    }
+
+</script>
+</body>
+</html>
