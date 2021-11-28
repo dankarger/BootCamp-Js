@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<div>
+<ol class="ol"></ol>
+</div>
+
+
+
+<script>
+    const users = [
+        {
+            id: 167464,
+            firstName: "Jimmy", lastName: "Arnold",
+            email: "jimmya@gmail.com",
+        },
+        {
+            id: 578447,
+            firstName: "Martha", lastName: "Goldman", email: "gold@hotmail.com",
+        },
+        {
+            id: 864578,
+            firstName: "Tim",
+            lastName: "Burton",
+            email: "timmy.hotmail.com",
+        },
+    ];
+
+    let olUsers = document.querySelector('.ol')
+    function injectUsers(users) {
+        olUsers.style.listStyle = 'none'
+        users.forEach(user=>{
+            olUsers.innerHTML += `
+            <li data-id=${user.id}>${user.firstName}</li>
+            `
+        })
+    }
+injectUsers(users)
+</script>
+<body>
+
+</body>
+</html>
+
+
