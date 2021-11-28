@@ -1,0 +1,14 @@
+.flex-column {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.blue-background {
+    background: rgba(76, 154, 173, 0.69);
+}
+
+.light-background {
+    background: rgba(123,23,12,0.3);
+}
