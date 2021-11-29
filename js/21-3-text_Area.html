@@ -31,7 +31,7 @@
 <div class="container">
     <label for="textArea">Why are you interested in this position?</label>
   <textarea id="textArea" rows='4' cols="50" ></textarea>
-    <button >Click here!</button>
+    <button disabled >Click here!</button>
     <h3 class="msg"></h3>
 </div>
 
@@ -54,6 +54,7 @@
       let remaining = 100-numberOfChar
 
      if(numberOfChar<100) {
+         button.setAttribute('disabled',true)
          button.style.background='initial'
          text.style.background="white"
          msg.innerHTML = `
@@ -61,8 +62,10 @@
      }
      if(numberOfChar>=100){
          button.style.background='lightgreen';
+         button
          text.style.background="lightgreen";
          msg.innerHTML = 'You can submit the form!';
+         button.removeAttribute('disabled')
      }
  }
 </script>
