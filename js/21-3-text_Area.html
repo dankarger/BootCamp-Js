@@ -17,12 +17,10 @@
             display: flex;
             margin:1rem 0;
             padding:0.5rem;
-
         }
         label {
             font-size: 25px;
         }
-
     </style>
 </head>
 <body>
@@ -40,32 +38,28 @@
  const button = document.querySelector('button')
  const msg =document.querySelector('.msg')
 
- button.addEventListener('click',()=>{
 
- })
  text.addEventListener('input',()=>{
      validate()
-
  })
 
 
  function validate() {
-     let numberOfChar = text.value.length
-      let remaining = 100-numberOfChar
+     let numberOfChar = text.value.length;
+      let remaining = 100-numberOfChar;
 
      if(numberOfChar<100) {
-         button.setAttribute('disabled',true)
+         button.setAttribute('disabled', true )
          button.style.background='initial'
          text.style.background="white"
          msg.innerHTML = `
-                        you need more: ${remaining} character to submit`
+                        you need at least  : ${remaining} more character to submit`
      }
      if(numberOfChar>=100){
          button.style.background='lightgreen';
-         button
          text.style.background="lightgreen";
          msg.innerHTML = 'You can submit the form!';
-         button.removeAttribute('disabled')
+         button.removeAttribute('disabled');
      }
  }
 </script>
