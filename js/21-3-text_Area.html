@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>21-3</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding:50px
+        }
+        #textArea {
+            display: flex;
+            margin:1rem 0;
+
+        }
+        label {
+            font-size: 25px;
+        }
+
+    </style>
+</head>
+<body>
+
+
+<div class="container">
+    <label for="textArea">Why are you interested in this position?</label>
+  <textarea id="textArea" rows='4' cols="50" ></textarea>
+    <button >Click here!</button>
+    <h3 class="msg"></h3>
+</div>
+
+<script>
+ const text = document.querySelector('#textArea')
+ const button = document.querySelector('button')
+ const msg =document.querySelector('.msg')
+
+ button.addEventListener('click',()=>{
+
+ })
+ text.addEventListener('input',()=>{
+     validate()
+
+ })
+
+
+ function validate() {
+     let numberOfChar = text.value.length
+      let remaining = 100-numberOfChar
+
+     if(numberOfChar<100) {
+         button.style.background='initial'
+         text.style.background="white"
+         msg.innerHTML = `your text size is: ${numberOfChar} characters long,
+                        you need more: ${remaining} character to submit`
+     }
+     if(numberOfChar>=100){
+         button.style.background='lightgreen';
+         text.style.background="lightgreen";
+         msg.innerHTML = 'You can submit the form!';
+     }
+ }
+</script>
+</body>
+</html>
