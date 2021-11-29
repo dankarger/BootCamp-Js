@@ -37,7 +37,7 @@
         olUsers.style.listStyle = 'none'
         users.forEach(user=>{
             olUsers.innerHTML += `
-            <li data-id=${user.id}>${user.firstName}</li>
+            <li data-id=${user.id}>${user.firstName}+${user.lastName} this is my email:${user.email}</li>
             `
         })
     }
