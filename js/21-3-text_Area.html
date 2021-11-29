@@ -16,6 +16,7 @@
         #textArea {
             display: flex;
             margin:1rem 0;
+            padding:0.5rem;
 
         }
         label {
@@ -55,7 +56,7 @@
      if(numberOfChar<100) {
          button.style.background='initial'
          text.style.background="white"
-         msg.innerHTML = `your text size is: ${numberOfChar} characters long,
+         msg.innerHTML = `
                         you need more: ${remaining} character to submit`
      }
      if(numberOfChar>=100){
