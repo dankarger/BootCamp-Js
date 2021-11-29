@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>21-5</title>
+</head>
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 100px;
+        background-color: white;
+        flex-direction: column;
+    }
+
+    .container {
+        flex-direction: column;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 2rem;
+    }
+
+    button, label {
+        margin: 1rem 0;
+    }
+</style>
+<body>
+<div class="container">
+    <label for="input">How many Smileys you want?</label>
+    <input id="input" type="number">
+    <button>Enter</button>
+</div>
+<div class="smiley"></div>
+
+<script>
+    const inputUser = document.querySelector('#input');
+    const smiley = document.querySelector('.smiley')
+    const buttonEnter = document.querySelector('button')
+
+    buttonEnter.addEventListener('click', () => {
+        smiley.innerHTML = '';
+        let numberOfSmiley = inputUser.value
+        let string = '😀'.repeat(numberOfSmiley)
+        injectSmiley(string)
+    })
+
+    function injectSmiley(str) {
+        let string1 = str;
+
+        function write(string1) {
+            if (!string1) {
+                return
+            }
+            setTimeout(function () {
+                smiley.innerHTML += '😀'
+                write(string1.substring(2))
+            }, 200)
+        }
+        write(string1)
+    }
+</script>
+</body>
+</html>
