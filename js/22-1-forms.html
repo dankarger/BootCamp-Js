@@ -71,6 +71,9 @@
     .message {
         transform:scale(0);
     }
+    #submitButtonMain {
+        visibility: hidden;
+    }
     </style>
 </head>
 <body>
@@ -89,12 +92,13 @@
            <label for="age">Enter your age</label>
            <input type="number" id="age" name="age" placeholder="age">
        </div>
-        <button class='submitButton' type="submit">Submit</button>
+        <button class='fakeSubmitButton' type="button"  >Submit</button>
+        <button id="submitButtonMain" type="submit"></button>
     </form>
 
 </div>
 <div class="confirm-window">
-    <form action="">
+
     <div class="container">
     <h3>Is this information correct?</h3>
     <div>
@@ -108,9 +112,11 @@
    </div>
     <div class="buttons-div">
         <button class="edit">Edit</button>
-        <button class="confirm" type="sumbit">Confirm</button>
+        <button class="confirm">Confirm</button>
     </div>
-    </form>
+    </div>
+
+
     </div>
 </div>
 <div class="message">
@@ -129,8 +135,10 @@ const confirmAge= document.querySelector('.age')
 const buttonConfirm = document.querySelector('.confirm')
 const buttonEdit = document.querySelector('.edit')
 const confirmMessage = document.querySelector('.message')
-const submitButton = document.querySelector('.submitButton')
-form.addEventListener('submit', function(e){
+const submitButton = document.querySelector('#submitButtonMain')
+const fakeSubmitButton = document.querySelector('.fakeSubmitButton')
+
+fakeSubmitButton.addEventListener('click', function(e){
     form.classList.toggle('background-opacity')
     confirmeWindow.classList.toggle('normal-scale')
     confirmName.innerHTML= userName.value;
@@ -143,6 +151,7 @@ buttonEdit.addEventListener('click', ()=>{
     confirmeWindow.classList.toggle('normal-scale')
 })
 buttonConfirm.addEventListener('click',()=>{
+    submitButton.click()
      alert('Your form as been submitted')
      confirmMessage.classList.toggle('normal-scale')
 
