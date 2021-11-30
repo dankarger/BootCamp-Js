@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding:50px;
+        }
+    img {
+        display: none;
+    }
+    .show-onOff {
+        display: block;
+    }
+    </style>
+</head>
+<body>
+<div class="container">
+<label for="checkImage">Show Image?</label>
+<input type="checkbox" id="checkImage">
+</div>
+<div class="image">
+    <img src="https://helpx.adobe.com/content/dam/help/en/stock/how-to/visual-reverse-image-search/jcr_content/main-pars/image/visual-reverse-image-search-v2_intro.jpg" alt="">
+</div>
+<script>
+    const img = document.querySelector('img');
+    const checkbox = document.querySelector('#checkImage')
+    checkbox.addEventListener('change',()=>{
+        img.classList.toggle("show-onOff")
+    })
+    
+</script>
+</body>
+</html>
