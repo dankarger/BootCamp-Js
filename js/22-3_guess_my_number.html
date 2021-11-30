@@ -41,19 +41,18 @@
 
 
 <script>
-const message = document.querySelector('.message');
-const messageEndGame = document.querySelector('h3');
-const box = document.querySelector('.box');
 const chosenLetter = randomizeLetter()
-console.log(chosenLetter)
-const button = document.querySelector('button')
-const guessedLetterMessage = document.querySelector('.guessedLetter')
-window.addEventListener('keypress',(event)=>{
+console.log('chosen letter: ',chosenLetter)
+let isGAmeOver = false;
 
-    checkGuess(event.key)
+window.addEventListener('keypress',(event)=>{
+    if(!isGAmeOver) {
+        checkGuess(event.key)
+    }
 })
 
 let guessedLetters = []
+const guessedLetterMessage = document.querySelector('.guessedLetter')
 
 function checkGuess(letter) {
     let regex = /[a-zA-Z]/g;
@@ -65,26 +64,33 @@ function checkGuess(letter) {
             guessedLetters.push(letter)
             guessedLetterMessage.innerHTML = guessedLetters.join(',')
         }
-
     }else{
         return messageUser('Enter a valid letter','red')
     }
 }
 
-
-// }
+const message = document.querySelector('.message');
 
 function messageUser(str,color) {
     message.textContent =''
     message.style.color=color;
     message.textContent=str
 }
+
+const messageEndGame = document.querySelector('h3');
+const box = document.querySelector('.box');
+const button = document.querySelector('button')
+
 function userWin(){
+    isGAmeOver=true
     box.innerHTML = chosenLetter
     box.style.background = 'limegreen'
-    messageUser(`You win the letter is ${chosenLetter}`,'limegreen')
+    messageUser(`You win the letter is "${chosenLetter}"`,'limegreen')
     button.style.display='block';
+    guessedLetterMessage.innerHTML = ""
+    messageEndGame.innerHTML = 'You want to play again?'
 }
+
 function randomizeLetter(){
     const alphabet = "abcdefghijklmnopqrstuvwxyz"
     return alphabet[Math.floor(Math.random() * alphabet.length)]

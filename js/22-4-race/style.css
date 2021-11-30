@@ -1,0 +1,79 @@
+body {
+  /*transition: background-color 200ms ease-in;*/
+}
+.racer_table {
+  margin: auto;
+}
+
+td {
+  height: 40px;
+  width: 50px;
+  border: 1px solid whitesmoke;
+
+}
+
+td.active {
+  background-repeat: no-repeat;
+  background-size: 90%;
+  background-position: center;
+}
+
+#player1-race > td.active {
+  background-image: url(images/player_1.png);
+}
+
+#player2-race td.active {
+  background-image: url(images/player_2.png);
+}
+
+td:last-child {
+  background-image: url(images/finish.png);
+  background-size: cover;
+}
+
+td:last-child.active {
+  background-size: 90%, cover;
+  background-position: center, top left;
+}
+
+#player1-race td:last-child.active {
+  background-image: url(images/player_1.png), url("images/finish.png");
+}
+
+#player2-race td:last-child.active {
+  background-image: url(images/player_2.png), url("images/finish.png");
+}
+
+.winner-div{
+  text-align: center;
+  margin-top: 1rem;
+  display:none;
+}
+.winner-div form h1 {
+  margin-bottom: 3rem;
+}
+.winning-animation{
+  width:100%;
+  transition: 1s ease-in;
+  transform:translateX(-220px) rotate( 90deg);
+  animation:  winning 2s   forwards ease-in ;
+
+}
+button{
+  margin-top:10rem;
+  transition: 10s;
+  opacity: 0;
+  animation: fadeIn 2s 1.8s forwards  ease-in;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+@keyframes winning {
+  to{
+
+    transform:translateX(0) rotate(0) scale(1.5);
+  }
+}
