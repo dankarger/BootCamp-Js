@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>22-1</title>
+    <style>
+    body{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 100px;
+        font-size: 20px;
+    }
+    .form-container{
+        border:1px solid #6d6d85;
+        box-shadow: 2px 2px 20px rgba(121, 115, 115, 0.62);
+        padding:50px;
+    }
+    form {
+        height:100%;
+        width:100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    label {
+        display: inline-block;
+        color: #887c7c;
+    }
+    input {
+        margin:   1rem 0;
+    }
+    .background-opacity   {
+        opacity: 0.12;
+        background: #1f1717;
+    }
+    .confirm-window {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+        opacity: 1;
+        transform: scale(0);
+        height:50%;
+        width:50%;
+        position:absolute;
+        top:20%;
+        left:30%;
+        border:1px solid #6d6d85;
+        box-shadow: 2px 2px 20px rgba(121, 115, 115, 0.62);
+        transition: 3s scale ease-in-out;
+    }
+    .normal-scale{
+        transform: scale(1);
+    }
+    .buttons{
+        padding:0.5rem 1rem;
+        margin:1rem;
+    }
+    .confirm-window p {
+        display: inline-block;
+    }
+    .confirm-window span {
+        color: #9db4cc;
+    }
+    .message {
+        transform:scale(0);
+    }
+    </style>
+</head>
+<body>
+
+<div class="form-container" id="formSingUp">
+    <form action="">
+        <div>
+            <label for="name">Enter your Name:</label>
+            <input type="text" id="name" name="name" placeholder="Name">
+        </div>
+        <div>
+            <label for="email">Enter your Email</label>
+            <input type="email" name="email" id="email" placeholder="Email">
+        </div>
+       <div>
+           <label for="age">Enter your age</label>
+           <input type="number" id="age" name="age" placeholder="age">
+       </div>
+        <button class='submitButton' type="submit">Submit</button>
+    </form>
+
+</div>
+<div class="confirm-window">
+    <form action="">
+    <div class="container">
+    <h3>Is this information correct?</h3>
+    <div>
+        <span>Your Name:</span>  <p class="name"  > </p>
+    </div>
+    <div>
+        <span>Your Email:</span>   <p class="email"  > </p>
+    </div>
+   <div>
+       <span>Your Age:</span> <p class="age"> </p>
+   </div>
+    <div class="buttons-div">
+        <button class="edit">Edit</button>
+        <button class="confirm" type="sumbit">Confirm</button>
+    </div>
+    </form>
+    </div>
+</div>
+<div class="message">
+    <h2>Your from as been submitted :)</h2>
+</div>
+<script>
+const userName = document.querySelector('#name');
+const userEmail = document.querySelector('#email');
+const userAge = document.querySelector('#age');
+const form = document.querySelector('#formSingUp')
+// const formContainer = document.querySelector('.form-container')
+const confirmeWindow = document.querySelector('.confirm-window')
+const confirmName= document.querySelector('.name')
+const confirmEmail= document.querySelector('.email')
+const confirmAge= document.querySelector('.age')
+const buttonConfirm = document.querySelector('.confirm')
+const buttonEdit = document.querySelector('.edit')
+const confirmMessage = document.querySelector('.message')
+const submitButton = document.querySelector('.submitButton')
+form.addEventListener('submit', function(e){
+    form.classList.toggle('background-opacity')
+    confirmeWindow.classList.toggle('normal-scale')
+    confirmName.innerHTML= userName.value;
+    confirmEmail.innerHTML= userEmail.value
+    confirmAge.innerHTML= userAge.value
+    e.preventDefault();
+})
+buttonEdit.addEventListener('click', ()=>{
+    form.classList.toggle('background-opacity')
+    confirmeWindow.classList.toggle('normal-scale')
+})
+buttonConfirm.addEventListener('click',()=>{
+     alert('Your form as been submitted')
+     confirmMessage.classList.toggle('normal-scale')
+
+})
+</script>
+</body>
+</html>
