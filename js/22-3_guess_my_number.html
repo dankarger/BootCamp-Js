@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>22-3</title>
+</head>
+<style>
+    body{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+    }
+    .box {
+        border:1px solid grey;
+        /*background: rgba(84, 81, 81, 0.65);*/
+        padding:0.5rem;
+    }
+    button {
+        display: none;
+    }
+
+</style>
+<body>
+
+<h1>Welcome To Guess My Letter</h1>
+<div class="box">
+    ?
+</div>
+
+<p class="message">Guess a letter</p>
+<h3>Keys guessed</h3>
+<p class="guessedLetter"></p>
+<form action="">
+<button type="submit">Yes</button>
+</form>
+
+
+<script>
+const message = document.querySelector('.message');
+const messageEndGame = document.querySelector('h3');
+const box = document.querySelector('.box');
+const chosenLetter = randomizeLetter()
+console.log(chosenLetter)
+const button = document.querySelector('button')
+const guessedLetterMessage = document.querySelector('.guessedLetter')
+window.addEventListener('keypress',(event)=>{
+
+    checkGuess(event.key)
+})
+
+let guessedLetters = []
+
+function checkGuess(letter) {
+    let regex = /[a-zA-Z]/g;
+    if(regex.test(letter)){
+        if(letter===chosenLetter) return userWin()
+        if(guessedLetters.includes(letter)){
+            return messageUser(`"${letter }" has been guessed before`,'red')
+        }else {
+            guessedLetters.push(letter)
+            guessedLetterMessage.innerHTML = guessedLetters.join(',')
+        }
+
+    }else{
+        return messageUser('Enter a valid letter','red')
+    }
+}
+
+
+// }
+
+function messageUser(str,color) {
+    message.textContent =''
+    message.style.color=color;
+    message.textContent=str
+}
+function userWin(){
+    box.innerHTML = chosenLetter
+    box.style.background = 'limegreen'
+    messageUser(`You win the letter is ${chosenLetter}`,'limegreen')
+    button.style.display='block';
+}
+function randomizeLetter(){
+    const alphabet = "abcdefghijklmnopqrstuvwxyz"
+    return alphabet[Math.floor(Math.random() * alphabet.length)]
+}
+</script>
+</body>
+</html>
