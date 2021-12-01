@@ -13,15 +13,24 @@
         justify-content: center;
         align-items: center;
         flex-direction: column;
+        font-family: Roboto, sans-serif;
+        background: rgba(138, 43, 226, 0.58);
+
 
     }
     .box {
-        border:1px solid grey;
-        /*background: rgba(84, 81, 81, 0.65);*/
-        padding:0.5rem;
+        border:2px solid grey;
+        background: rgba(210, 181, 181, 0.65);
+        border-radius:10px;
+        padding:0.5rem 1rem ;
     }
     button {
         display: none;
+        padding:1rem 1rem;
+    }
+    h1 {
+        color:deeppink;
+        text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.84);
     }
 
 </style>
@@ -63,6 +72,8 @@ function checkGuess(letter) {
         }else {
             guessedLetters.push(letter)
             guessedLetterMessage.innerHTML = guessedLetters.join(',')
+            return messageUser('Nope, wrong guess','red')
+
         }
     }else{
         return messageUser('Enter a valid letter','red')
@@ -95,6 +106,7 @@ function randomizeLetter(){
     const alphabet = "abcdefghijklmnopqrstuvwxyz"
     return alphabet[Math.floor(Math.random() * alphabet.length)]
 }
+
 </script>
 </body>
 </html>
