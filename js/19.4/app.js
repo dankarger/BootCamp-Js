@@ -22,7 +22,7 @@ ulElement.style.justifyContent='center';
 for(let i = 0; i < 5; i++){
     let li = document.createElement('li')
      li.innerHTML = `<li class="li-item">Item  ${i}</li>`
-    li.style.color = i%2===0? 'white':'pink';
+    li.style.color = i%2===0? 'white':'red';
 
     li.style.fontSize ="3rem";
     li.style.margin="2rem";
@@ -30,6 +30,13 @@ for(let i = 0; i < 5; i++){
     ulElement.appendChild(li);
 }
 
+function injectText(element,text) {
+    element.textContent= text
+    console.log(element)
+}
+
+injectText(subHeader,'hiihiihi')
+// injectText(header,'hhhhh')
 
 // document.body.classList.add('light-background')
 document.body.classList.add('flex-column')

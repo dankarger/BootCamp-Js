@@ -39,10 +39,10 @@ function showFirstAndLast(arr) {
 
 
 function showFirstAndLast2(arr) {
-    let result=[];
-    arr.forEach(word=>{
-        let r =[];
-        r.push(word[0]+word[word.length-1])
+    let result = [];
+    arr.forEach(word => {
+        let r = [];
+        r.push(word[0] + word[word.length - 1])
         // r.push(word[word.length-1])
         result.push(r);
     })
@@ -72,10 +72,10 @@ function vowelCount(string) {
 console.log(vowelCount(string1))
 
 //5
-const capitalize=(str)=> {
-    let arr= str.split(' ');
-    let result = arr.map(word=>{
-        return word.slice(0,1).toUpperCase()+word.substr(1);
+const capitalize = (str) => {
+    let arr = str.split(' ');
+    let result = arr.map(word => {
+        return word.slice(0, 1).toUpperCase() + word.substr(1);
     })
     return result.join(' ')
 }
@@ -86,14 +86,15 @@ console.log(capitalize(string1));
 
 function shiftLetters(str) {
     let result = '';
-    let charcode=-1;
-    let arr= str.split('');
-    arr.forEach(el=>{
-        charcode = (el.charCodeAt()+1);
+    let charcode = -1;
+    let arr = str.split('');
+    arr.forEach(el => {
+        charcode = (el.charCodeAt() + 1);
         result += String.fromCharCode(charcode);
     })
     return result;
 }
+
 console.log(shiftLetters(string1));
 
 //7
@@ -102,10 +103,11 @@ console.log(shiftLetters(string1));
 function swapCase(str) {
     let arr = str.split(' ');
     let result = [];
-    arr.forEach(word=>{
-        result.push(capitalize(word));
+    arr.forEach((word, indx) => {
+        if (indx % 2 === 0) {
+            result.push(capitalize(word));
+        }
     })
-
     return result.join(' ')
 }
 

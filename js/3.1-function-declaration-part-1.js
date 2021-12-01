@@ -36,7 +36,7 @@ const power = a => Math.pow(a,2);
 //     return sum;
 // }
 
-const add = (a,b) => a+b;
+const add = (a,b=5) => a+b;
 
 
 // From function expressions to function declarations

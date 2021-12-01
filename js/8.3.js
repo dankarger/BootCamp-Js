@@ -15,10 +15,10 @@ const bookUtils = {
         return  book1.year<book2.year? book1:book2;     //3
     },
     setNewEdition : function(book, year) {    //4
-        return book.latestEdition=  year;
+         book.latestEdition=  year;
     },
     setLanguage : function(book, language) {  //5
-        return book.language = language;
+         book.language = language;
     },
     setTranslation(book, language, translator) {  //6
         book.translation = {
@@ -45,7 +45,7 @@ console.log(bookUtils.setNewEdition(book1,2002));
 console.log(bookUtils.setNewEdition(book1,2003));
 console.log(bookUtils.setLanguage(book1, 'French'));
 bookUtils.setTranslation(book1, 'Hebrew','Moshe C');
-bookUtils.setPublisher(book1, 'Pub','Tel-Aviv');
-bookUtils.setPublisher(book2, 'Pub','Hulon');
+bookUtils.setPublisher(book1, 'Pub','Tel-Aviv2');
+bookUtils.setPublisher(book2, 'Pub','Hulon2');
 console.log(bookUtils.isSamePublisher(book1, book2));
 console.log(book1)

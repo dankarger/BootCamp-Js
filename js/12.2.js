@@ -18,11 +18,10 @@ let candyStore = {
 //1
 function getCandy(candyStore, id) {
     let candies2 = candyStore.candies;
-
-    let result = candies2.filter(candy =>(
+    return candies2.filter(candy =>(
         candy.id.includes(id)
     ))
-    return result
+
 }
 
 console.log('1: ',getCandy(candyStore,"5hd7y"))
@@ -30,14 +29,10 @@ console.log('1: ',getCandy(candyStore,"5hd7y"))
 //2
 function getPrice(candyStore, id) {
     let candies = candyStore.candies;
-    let result= candies.filter(candy=>(
-        candy.id.includes(id)
-    ))
-    return result[0].price;
+    return  candies.find(candy=> candy.id===id).price;
 }
 
 console.log('2: ', getPrice(candyStore,"5hd7y"));
-
 //3
 
 function addCandy(candyStore, id,name,price) {
@@ -47,9 +42,9 @@ function addCandy(candyStore, id,name,price) {
         price:price
     })
 }
+
 addCandy(candyStore,'222','bla',4);
 console.log('3: ',candyStore)
-
 
 //4
 
@@ -58,9 +53,27 @@ function buy(candyStore, id) {
         candy.id.includes(id)
     ));
     candy[0].amount--;
-    candyStore.cashRegister+=candy[0].price;
+    return candyStore.cashRegister+=candy[0].price;
+}
+
+function buy2(candystore,id) {
+    let price= getPrice(candyStore,id)
+    let candy = getCandy(candyStore,id);
+    candy.amount-=1;
+    return  candyStore.cashRegister+=price
 
 }
 
 console.log('4: ', buy(candyStore,"5hd7y"));
 console.log(candyStore)
+console.log(buy2(candyStore,'222'));
+console.log(candyStore)
+
+
+
+candyStore= {};
+     candies = []
+          candy= {}
+          candy= {}
+     cashRegister = {}
+

@@ -6,4 +6,5 @@ console.log(numbersSort1)
 
 //2
 const numbersSort2 = numbers.sort((a,b)=>b-a)
+
 console.log(numbersSort2)

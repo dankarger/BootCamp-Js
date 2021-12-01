@@ -50,6 +50,7 @@ function funcB() {
 }
 
 a = funcB();
+console.dir(funcB());
 console.log(typeof a);
 console.log(typeof b);
 console.log('//<-------------------------------------------------------------------------------------->\n')
@@ -122,3 +123,4 @@ funcE();
 //first will console log 'Value of f in local scope:  1'
 //then 'Value of f in global scope:  1'
 //fix: need to movethe var f declaration to the top;
+console.dir(funcD2)

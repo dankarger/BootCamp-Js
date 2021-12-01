@@ -50,13 +50,14 @@ console.log(findNames)
 
 //2
 function findBornBefor1990(arr) {
-    let result = [];
+    let result2 = [];
     arr.forEach(el => {
         if (Number(el.birthday.substr(-4)) < 1990) {
-            result.push(el);
+          result2.push(el);
+
         }
     })
-    return result
+    return result2
 }
 
 console.log(findBornBefor1990(data));
@@ -66,11 +67,9 @@ console.log(findBornBefor1990(data));
 function findFoods(data) {
     let result = {};
     data.forEach(el => {
-        console.log(el)
         let foods1 = el.favoriteFoods.meats;
         let foods2 = el.favoriteFoods.fish;
         let foods = foods1.concat(foods2);
-        console.log(foods)
         foods.forEach(food => {
             if (result[food]) {
                 result[food]++
@@ -81,5 +80,4 @@ function findFoods(data) {
     })
     return result;
 }
-
-console.log(findFoods(data));
+console.log('3:', findFoods(data))

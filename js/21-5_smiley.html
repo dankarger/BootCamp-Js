@@ -16,7 +16,6 @@
         background-color: white;
         flex-direction: column;
     }
-
     .container {
         flex-direction: column;
         display: flex;
@@ -24,7 +23,6 @@
         align-items: center;
         margin-top: 2rem;
     }
-
     button, label {
         margin: 1rem 0;
     }
@@ -41,7 +39,6 @@
     const inputUser = document.querySelector('#input');
     const smiley = document.querySelector('.smiley')
     const buttonEnter = document.querySelector('button')
-
     buttonEnter.addEventListener('click', () => {
         smiley.innerHTML = '';
         let numberOfSmiley = inputUser.value
@@ -51,13 +48,12 @@
 
     function injectSmiley(str) {
         let string1 = str;
-
         function write(string1) {
             if (!string1) {
                 return
             }
             setTimeout(function () {
-                smiley.innerHTML += '😀'
+                smiley.innerHTML += '😀 '
                 write(string1.substring(2))
             }, 200)
         }

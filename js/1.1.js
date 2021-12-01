@@ -13,3 +13,4 @@ console.log(booleanVar);
 console.log(nullVar);
 console.log(undefinedVar);
 console.log(symbolVar);
+

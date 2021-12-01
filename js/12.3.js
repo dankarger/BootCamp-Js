@@ -39,25 +39,17 @@ const school = {
         // let student = this.findPerson('students',id);
         let teacher =this['teachers'].find(person=>(person.subjects.find(subject=>(subject===sub))));
         let teacherList = school.teachers
+       // let avaibleTeachers = [];
+        //better option
+        let avaibleTeachers2 = teacherList.filter(teacher=>teacher.capacityLeft>0&&teacher.subjects.includes(subject))
 
-       let avaibleTeachers = [];
-        for(let i=0;i<teacherList.length;i++){
-            if(teacherList[i].subjects.includes(subject)&& teacherList[i].capacityLeft>0){
-                avaibleTeachers.push(teacherList[i])
-            }
-
-        }
-        for(let i = 0;i<avaibleTeachers.length; i++){
-            if(avaibleTeachers[i].capacityLeft>0){
-
+        for(let i = 0;i<avaibleTeachers2.length; i++){
+            if(avaibleTeachers2[i].capacityLeft>0){
            // teacher.students.push(student);
-           avaibleTeachers[i].students.push(id)
-            avaibleTeachers[i].capacityLeft--;
-           return avaibleTeachers[i]
+           avaibleTeachers2[i].students.push(id)
+            avaibleTeachers2[i].capacityLeft--;
+           return avaibleTeachers2[i]
             }
-
-
-
         }
            return 'no available  teachers left';
         },
@@ -80,6 +72,8 @@ const school = {
         }
         }
 };
+
+
 //
 // console.log(school.findPerson('students',10))
 // console.log(school.findPerson('teachers',2))
@@ -88,8 +82,8 @@ console.log(school.assignPerson(11,"biology"))
 console.log(school.assignPerson(12,"biology"))
 console.log(school.assignPerson(13,"biology"))
 console.log(school.assignPerson(14,"biology"))
-// school.assignTeacherSubject(1,'blabla')
-// console.log(school.addStudent('bla bla',15,31))
+school.assignTeacherSubject(1,'blabla')
+console.log(school.addStudent('bla bla',15,31))
 // console.log(school.addStudent('bla bla1',15,21))
 // console.log(school.assignTeacherSubject(1,'blabla'))
 // console.log(school)

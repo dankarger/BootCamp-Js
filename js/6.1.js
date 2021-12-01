@@ -1,13 +1,11 @@
 const arr=[1,7,3,-5,7,3,9];
-
-//
 for(let n in arr){
     console.log(arr[n])
 }
 
 function arrayLength(arr) {
     let arrLength = 0;
-    for(let n in arr) {
+    for(let n of arr) {
         arrLength +=1;
     }
     return arrLength
@@ -26,8 +24,8 @@ console.log(arraySum(arr))
 
 function arrayMulti(arr) {
     let multi=1;
-    for(let n in arr) {
-        multi *= arr[n];
+    for(let n of arr) {
+        multi *= n;
     }
     return multi;
 }

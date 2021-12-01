@@ -27,6 +27,6 @@ let library = [
 //1-2
 function findBooks2(data) {
     let result= data.filter(b=> b.readingStatus===true)
-    return result
+    return result;
 }
 console.log('2:',findBooks2(library))

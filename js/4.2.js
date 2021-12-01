@@ -4,6 +4,9 @@ function grade(score) {
     if(score>=70&&score<=79) return "C";
     if(score>=80&&score<=89) return "B";
     if(score>=90&&score<=100) return "A";
+    else{
+        return 'enter number from 0 to 100';
+    }
 }
 //test
-console.log(grade(77))
+console.log(grade(11))

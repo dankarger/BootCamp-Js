@@ -15,8 +15,6 @@
         flex-direction: column;
         font-family: Roboto, sans-serif;
         background: rgba(138, 43, 226, 0.58);
-
-
     }
     .box {
         border:2px solid grey;
@@ -48,7 +46,6 @@
 <button type="submit">Yes</button>
 </form>
 
-
 <script>
 const chosenLetter = randomizeLetter()
 console.log('chosen letter: ',chosenLetter)
@@ -73,21 +70,17 @@ function checkGuess(letter) {
             guessedLetters.push(letter)
             guessedLetterMessage.innerHTML = guessedLetters.join(',')
             return messageUser('Nope, wrong guess','red')
-
         }
     }else{
         return messageUser('Enter a valid letter','red')
     }
 }
-
 const message = document.querySelector('.message');
-
 function messageUser(str,color) {
     message.textContent =''
     message.style.color=color;
     message.textContent=str
 }
-
 const messageEndGame = document.querySelector('h3');
 const box = document.querySelector('.box');
 const button = document.querySelector('button')
@@ -101,7 +94,6 @@ function userWin(){
     guessedLetterMessage.innerHTML = ""
     messageEndGame.innerHTML = 'You want to play again?'
 }
-
 function randomizeLetter(){
     const alphabet = "abcdefghijklmnopqrstuvwxyz"
     return alphabet[Math.floor(Math.random() * alphabet.length)]

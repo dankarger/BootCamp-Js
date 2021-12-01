@@ -1,17 +1,18 @@
 // Block 1
-var b = 1;
-
-function someFunction(number) {
-    function otherFunction(input) {
-        return b;
-    }
-
-    b = 5;
-    return otherFunction;
-}
-
-var firstResult = someFunction(9);
-var result = firstResult(2);
+//
+// var b = 1;
+//
+// function someFunction(number) {
+//     function otherFunction(input) {
+//         return b;
+//     }
+//
+//     b = 5;
+//     return otherFunction;
+// }
+//
+// var firstResult = someFunction(9);
+// var result = firstResult(2);
 
 //will return noting, because there is no console log
 //<-------------------------------------------------------------------------------------->
@@ -21,14 +22,21 @@ var a = 1;
 
 function b2() {
     a = 10;
-    return;
+
 
     function a() {
+        a=20;
     }
+
+    return a ;
+
+
 }
 
-b2();
+let test = b2();
+console.log(test)
 console.log(a);
+console.log('----------')
 
 //will return 1 because var a is set to 1, and aischanged inside the function b2 scope but remain in the functionscope
 //<-------------------------------------------------------------------------------------->
@@ -42,5 +50,7 @@ for (i = 0; i < 3; i++) {
     setTimeout(log, 100);
 }
 
+
+a.toLocaleString()
 //will return 3 3 3 because the let i is declared outside the for loop scope, and because of the time out, function will
 //be updated before returning , and then returned after the iterations

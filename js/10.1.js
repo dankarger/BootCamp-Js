@@ -35,3 +35,16 @@ function ownFunc(str,func,func2){
     return func2(result);
 }
 console.log('4: '+ ownFunc('this is another test',callback2,capitalize))
+
+
+const ownfunc2 = (callback,str) => {
+    console.log(str)
+    return callback()
+}
+
+const test3 =(callback3, str)=>{
+    console.log(str)
+   return (callback3());
+}
+console.log(ownfunc2(()=>capitalize('hgfghf'),'hihihi'));
+console.log(test3(()=>capitalize('t-est-6'),'j'))

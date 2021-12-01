@@ -7,31 +7,27 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>21-2</title>
     <style>
-        body{
-            display:flex;
+        body {
+            display: flex;
             justify-content: center;
             align-items: center;
-            padding:150px;
+            padding: 150px;
         }
         .text {
-            font-size:50px;
-
-
+            font-size: 50px;
         }
         button {
-            padding:1rem 2rem;
-            font-size:3rem;
-            border-radius:10px;
+            padding: 1rem 2rem;
+            font-size: 3rem;
+            border-radius: 10px;
         }
         .container {
-
-            width:1000px;
+            width: 1000px;
             height: 100%;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-
     </style>
 </head>
 <body>
@@ -47,24 +43,23 @@
     const buttonMinus = document.querySelector('.minus');
     const buttonPlus = document.querySelector('.plus');
     const textDiv = document.querySelector('.text')
-
-    buttonMinus.addEventListener('click',()=>{
-            changeFontSize('less')
+    buttonMinus.addEventListener('click', () => {
+        changeFontSize('less')
     });
-    buttonPlus.addEventListener('click',()=>{
+    buttonPlus.addEventListener('click', () => {
         changeFontSize('bigger')
     })
 
     function changeFontSize(value) {
         let fontSize = parseInt(getComputedStyle(textDiv).fontSize)
         console.log(fontSize)
-        if(fontSize>=100){
-            value==='less'?fontSize-=5: fontSize+=0
+        if (fontSize >= 100) {
+            value === 'less' ? fontSize -= 5 : fontSize += 0
         }
-        if(fontSize<=6){
-            value==='bigger'?fontSize+=5: fontSize+=0
+        if (fontSize <= 6) {
+            value === 'bigger' ? fontSize += 5 : fontSize += 0
         }
-        if (fontSize >6 && fontSize < 100) {
+        if (fontSize > 6 && fontSize < 100) {
             value === 'bigger' ? fontSize += 5 : fontSize -= 5
             textDiv.style.fontSize = fontSize.toString() + 'px'
         }

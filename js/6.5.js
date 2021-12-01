@@ -4,9 +4,10 @@ let arr = Array(100);
 let arr100 = arr.fill({'hello':1},0,100);
 
 //2
-const arrNumber100= Array.from(Array(100).keys())
-
-
+const arrNumber100= Array.from(Array(101).keys())
+let arr2 = Array.from({length: 100}, (_,index) => index+1)
+let arr3 = Array.from({length: 100}, (_,index) => index+1)
+console.log('arr3: ' +arr3 )
 console.log(arrNumber100)
 
 //3
@@ -30,7 +31,7 @@ arr100.pop()
 arr100.push('555555')
 console.log(newArr100);
 
-
+console.log(['lvvv'])
 //- copy that is affected by original arr
 
 const arr100Copy = arr100;
