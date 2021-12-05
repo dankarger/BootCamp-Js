@@ -7,9 +7,10 @@ a. This will point at the window element, because arrow function dont affect the
 b. to fix it we need to change the arrow function to a regular function that affect the "this" output.
 
 3:
-will return window object because the myFuncDec is trigerring the "this" call and its in the global scope
+will return window object because the myFuncDec is triggering the "this" call and its in the global scope
 
 4:
-will point to the window object,
+will point to the window object, because of the arrow function
 
 5:
+will point to the window object, because of the arrow function
