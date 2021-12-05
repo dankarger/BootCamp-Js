@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>23.1</title>
+    <style>
+    body {
+        width:100vw;
+        height:100vh;
+        display: flex;
+        justify-content: center;
+        padding-top:10rem;
+    }
+    .clock-div {
+        font-size: 10rem;
+    }
+    </style>
+</head>
+<body>
+<div class="clock-div">
+
+</div>
+
+<script>
+    const clock = document.querySelector('.clock-div');
+    //option 1
+    function showTime () {
+        let currentDate = new Date();
+        let currentTime = currentDate.toLocaleTimeString();
+        return clock.innerHTML = currentTime
+
+
+    }
+    function refresh(showTime){
+        setInterval(showTime,1000)
+    }
+
+  // refresh()
+
+    //option2
+    const clockObject = {
+        currentTime:new Date().toLocaleTimeString(),
+        inject(){
+
+            let newTime = new Date().toLocaleTimeString()
+            return clock.innerHTML = newTime},
+        refresh(){
+            setInterval(()=>{
+                this.inject()
+            },1000)
+        }
+
+    }
+    clockObject.refresh()
+
+
+</script>
+</body>
+</html>
