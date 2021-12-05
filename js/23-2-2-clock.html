@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+<div class="clock"></div>
+<button class="start">Start</button>
+<button class="stop">Stop</button>
+
+<script>
+    const clock = document.querySelector('.clock')
+    const startButton = document.querySelector('.start')
+    const stopButton = document.querySelector('.stop')
+
+
+
+    let firstPlay = false
+    let firstTime =0
+    let resumeTime =0
+    let stopTime =0
+
+
+    let count = 0
+    let timer
+    startButton.addEventListener('click',()=>{
+      if( !firstPlay) {
+          startTimer()
+          firstPlay = false
+      }
+
+
+    })
+    stopButton.addEventListener('click',()=>{
+      clearInterval(timer)
+    })
+
+    function stopClock() {
+
+    }
+
+    function startTimer() {
+       timer= setInterval(counter,100)
+    }
+    function counter(){
+
+        count+=100
+        injectTime()
+    }
+    function injectTime() {
+        let mili =  Math.floor(count /100) ;
+        let seconds = Math.floor((count/1000)%60);
+        let minutes =  Math.floor(seconds/60);
+        if(mili<9){
+            mili= '0'+ mili
+        }
+        if(seconds<9){
+            seconds= '0'+ seconds
+        }
+
+
+        if(minutes<9){
+            minutes=`0`+ minutes
+        }
+
+        clock.innerHTML = `${minutes}:${seconds}:${mili}`
+    }
+</script>
+</body>
+</html>
