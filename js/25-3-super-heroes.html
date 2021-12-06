@@ -16,6 +16,18 @@
     const batman = { name: "Bruce Wayne"
     }
     const superHeroes = [wonderWoman, batman];
+
+    function printName() {
+        console.log(`my name is ${this.name}`);
+    }
+    function printHeroes(heroes, printFunc) { //add your code here
+
+       for(hero in heroes){ 
+
+            printFunc.call(superHeroes[hero])
+        }
+    }
+    printHeroes(superHeroes,printName)
 </script>
 </body>
 </html>
