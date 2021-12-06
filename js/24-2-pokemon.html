@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+
+<script>
+    function Pokemon(pokemonName, pokemonType, pokemonAttackList){
+        this.name = pokemonName;
+        this.type = pokemonType;
+        this.attackList = pokemonAttackList;
+
+
+    }
+
+    let pokemon1  = new Pokemon('baltazor','good',['jgfghfgh','hhhhhh','hhhhh']);
+    let pokemon2 = new Pokemon('mimi','good',['lightning','hhhhhh','hhhhh'])
+    let pokemon3  = new Pokemon('moshe','good',['berucraci','hhhhhh','hhhhh'])
+   Pokemon.prototype.callPokemon = function (){
+        return `I choose you ${this.name}`
+   }
+    Pokemon.prototype.attack = function (attack){
+        return ` ${this.name} use ${this.attackList[attack]}`
+    }
+  console.log( pokemon1.callPokemon())
+    console.log( pokemon1.attack(2))
+</script>
+</body>
+</html>
