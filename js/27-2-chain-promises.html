@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>27-2</title>
+</head>
+<body>
+<script>
+
+        const makeAllCaps = (array) =>{
+                return new Promise(function(resolve, reject) {
+                    resolve(
+                        array.map((word)=>{
+                        if(typeof word!== 'string')   return reject(word)
+                            return word.slice(0,1).toUpperCase()+word.slice(1)
+                    })
+                    );
+                });
+        };
+        const sortArray = (capitalizeArray)=> {
+            return new Promise(function(resolve,reject ) {
+                   return  resolve(
+                         capitalizeArray.sort()
+                    )
+            })
+
+        }
+        //success
+        makeAllCaps(['ddsdsd','hello','hi,','shalom','aaaaaaa'])
+        .then((res)=>{
+            console.log('t',res)
+            return sortArray(res)
+        })
+        .then((res)=>{sortArray(res)})
+        .catch(err=>{
+            console.log('eeeerrrrrooooorrrrrr')
+        })
+        //fail
+        makeAllCaps(['ddsdsd','hello','hi,','shalom','aaaaaaa',6])
+            .then((res)=>{
+                console.log('t2',res)
+                return sortArray(res)
+            })
+            .then((res)=>{sortArray(res)})
+            .catch(err=>{
+                console.log('2:eeeerrrrrooooorrrrrr')
+            })
+
+
+    //
+    //
+    // function capitalize(array) {
+    //         let newArray= [];
+    //         array.map(word=>{
+    //             if(word!==typeof String)return false;
+    //             let capWord = word.toUpperCase();
+    //             return capWord.charAt(0)+word.subStr(1,word.length)
+    //
+    //         })
+    // }
+
+
+
+</script>
+</body>
+</html>
