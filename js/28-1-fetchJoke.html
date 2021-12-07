@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>28.1</title>
+    <style>
+        body{
+            background: rgb(109,172,177);
+            background: linear-gradient(95deg, rgba(109,172,177,1) 16%, rgba(65,51,180,1) 89%, rgba(65,51,180,1) 95%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .joke-div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            border-radius: 10px;
+            padding:10rem;
+            border:2px solid white;
+            color:white;
+        }
+    </style>
+</head>
+<body>
+<div class="joke-div">
+    <div class="title"><h1>Want to hear a Joke?</h1></div>
+    <div class="joke"><h3>(press on the button)</h3></div>
+    <button>getJoke</button>
+</div>
+
+<script>
+    const titleDiv = document.querySelector('.title h1');
+    const jokeDiv = document.querySelector('.joke h3');
+    const buttonJoke = document.querySelector('button')
+    function getJoke() {
+        fetch('https://api.jokes.one/jod', {
+            headers: {
+                Accept: 'application/json',
+            },
+        })
+        .then((res)=> res.json())
+        .then((res) => {
+            let titleJoke= res.contents.jokes[0].joke.title;
+            let joke= res.contents.jokes[0].joke.text;
+            titleDiv.textContent =  titleJoke;
+            jokeDiv.textContent = joke ;
+        })
+        .catch(console.log('err'))
+    }
+    buttonJoke.addEventListener('click',getJoke)
+
+
+
+</script>
+</body>
+</html>
