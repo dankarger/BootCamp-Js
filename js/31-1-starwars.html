@@ -9,11 +9,50 @@
 </head>
 <style>
 body {
-
+    width: 100vw;
+    height:100vh;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-direction: column;
+    font-family: Raleway,sans-serif;
+    background: url('https://ctl.s6img.com/society6/img/yhaWFdSHoukFK_3oBH1pEEpZKYE/h_700,w_1500/artwork/~artwork/s6-original-art-uploads/society6/uploads/cms/page-starwars/images/90ebd42a9f1c4cc990878d5ae2e134c0?wait=0&attempt=0')no-repeat center center/cover;
 }
-.row {
-    background:cadetblue;
+table  {
+    background: rgba(95, 158, 160, 0.47);
     width:100%;
+    color:whitesmoke;
+    text-shadow: black 1px 1px ;
+    letter-spacing: 1px;
+}
+th {
+    background: rgba(37, 77, 57, 0.36);
+    font-size: 2rem;
+    color: #4ed5c0;
+}
+td{
+    background: rgba(162, 133, 78, 0.29);
+    font-size: 1rem;
+    padding:10px;
+    text-align: center;
+}
+.loading {
+    margin-top:10rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: rotate(-2deg);
+    animation: loading-animation 1s alternate ease-in-out infinite;
+    text-shadow: whitesmoke 1px 1px ;
+}
+h1 {
+    color: #5475d0;
+    font-size: 4rem;
+}
+@keyframes loading-animation {
+    to {
+        transform: rotate(2deg);
+    }
 }
 </style>
 <body>
@@ -29,12 +68,16 @@ body {
     </tr>
 
 </table>
+<div class="loading">
+    <h1>LOADING- Please wait</h1>
+
 </div>
 
 
 <script>
     const infoDiv = document.querySelector('.info');
     const URL = 'https://swapi.dev/api/'
+    const loadingDiv = document.querySelector('.loading')
  let dataArray = []
  let planetData = []
 
@@ -69,7 +112,10 @@ body {
          }
      }
      dataArray.push(personData)
-     if(dataArray.length===10) inject(dataArray)
+     if(dataArray.length===10) {
+
+         inject(dataArray)
+     }
  }
 
  function get10PersonData(){
@@ -98,6 +144,7 @@ body {
                 </tr>
                     `
      })
+      loadingDiv.style.display='none';
         // infoDiv.textContent=data
 
 
