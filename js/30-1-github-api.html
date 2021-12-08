@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>30.1</title>
+    <style>
+    body {
+        box-sizing: border-box;
+        width:100vw;
+        height:100vh;
+        background: #5f7272;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    .card {
+
+    }
+    .card img {
+        width:3rem;
+        height: 3rem;
+        object-fit: cover;
+    }
+    </style>
+</head>
+<body>
+<div class="input-div">
+    <label for="input-name">Enter Name of user</label>
+    <input id="input-name" type="text">
+    <button type="submit">Search</button>
+</div>
+<div class="cards-div">
+<div class="card">
+    <div class="img-div">
+        <img src="" alt="">
+    </div>
+    <h3 class="name"></h3>
+    <h3 class="number-repo"></h3>
+</div>
+</div>
+<script>
+
+    const URL = 'https://api.github.com/users/'
+    const button = document.querySelector('button')
+    let nameOfUser = document.querySelector('#input-name');
+    let cardName = document.querySelector('.name')
+    let cardImg = document.querySelector('.img-div img')
+    let cardNumber= document.querySelector('.number-repo')
+
+    let cardsDiv = document.querySelector('.cards-div')
+    let cardsList = []
+
+
+       async function getGitHubUser(name) {
+           try {
+               const data = await (await fetch(URL + name)).json()
+                cardName.textContent = data.login;
+                cardImg.src = data.avatar_url
+                cardNumber.textContent = data.public_repos
+
+
+           } catch (err) {
+               console.log(err)
+           }
+
+       }
+
+  button.addEventListener('click',()=>{
+
+
+      getGitHubUser(nameOfUser.value)
+      nameOfUser.value = ''
+  })
+    nameOfUser.addEventListener('keyup',(event)=>{
+        console.log('e')
+        if(event.key==='Enter') {
+            getGitHubUser(nameOfUser.value)
+            nameOfUser.value = ''
+
+        }
+    })
+</script>
+</body>
+</html>
