@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>31-1</title>
+</head>
+<style>
+body {
+
+}
+.row {
+    background:cadetblue;
+    width:100%;
+}
+</style>
+<body>
+<h1>Star Wars Api</h1>
+<div class="message"></div>
+<table class="info">
+    <tr>
+        <th>Name</th>
+        <th>Hair</th>
+        <th>Height</th>
+        <th>Planet</th>
+        <th>Population</th>
+    </tr>
+
+</table>
+</div>
+
+
+<script>
+    const infoDiv = document.querySelector('.info');
+    const URL = 'https://swapi.dev/api/'
+ let dataArray = []
+ let planetData = []
+
+ async function getStarWarsPerson(person){
+        try {
+            const data =await (await fetch(URL+'people/'+person, {
+                headers:{
+                    Accept: 'application/json'
+                }
+            })).json();
+            console.log(data)
+            if(data.detail==='Not found'){
+               message.textContent='Not Found'
+            }else{
+                makePersonObject(data)
+            }
+        }
+        catch{
+            console.log('ggfdfg')
+        }
+ }
+
+ async function  makePersonObject(data){
+     const planet = await (await fetch(data.homeworld)).json();
+     let personData = {
+         hair: data.hair_color,
+         height: data.height,
+         name:data.name,
+         planet:{
+             name: planet.name,
+             population: planet.population
+         }
+     }
+     dataArray.push(personData)
+     if(dataArray.length===10) inject(dataArray)
+ }
+
+ function get10PersonData(){
+        for(i = 1 ;i <= 10; i++ ){
+            getStarWarsPerson(i);
+        }
+ }
+
+ async function injectData(dataArray) {
+      await get10PersonData()
+      await console.log('f',dataArray);
+      // await  inject(dataArray)
+ }
+
+  function inject(data) {
+        console.log('gg',data)
+        // const fullData = await data
+     data.forEach(person=>{
+         infoDiv.innerHTML+= `
+                 <tr>
+                    <td><div class="name">${person.name}</div></td>
+                   <td> <div class="hair">${person.hair}</div></td>
+                    <td><div class="height">${person.height}</div></td>
+                   <td> <div class="planet-name">${person.planet.name}</div></td>
+                   <td> <div class="planet-population">${person.planet.population}</div></td>
+                </tr>
+                    `
+     })
+        // infoDiv.textContent=data
+
+
+}
+injectData(dataArray)
+
+</script>
+</body>
+</html>
