@@ -17,21 +17,35 @@ body {
     flex-direction: column;
     font-family: Raleway,sans-serif;
     background: url('https://ctl.s6img.com/society6/img/yhaWFdSHoukFK_3oBH1pEEpZKYE/h_700,w_1500/artwork/~artwork/s6-original-art-uploads/society6/uploads/cms/page-starwars/images/90ebd42a9f1c4cc990878d5ae2e134c0?wait=0&attempt=0')no-repeat center center/cover;
+    position: relative;
+    z-index: -1;
+}
+body::before {
+  content: '';
+    width:100%;
+    height:100%;
+    background: rgba(0, 0, 0, 0.15);
+    position: absolute;
+    top:0;
+    left:0;
+    z-index: 1;
 }
 table  {
+    position: relative;
     background: rgba(95, 158, 160, 0.47);
     width:100%;
     color:whitesmoke;
     text-shadow: black 1px 1px ;
     letter-spacing: 1px;
+    z-index: 100;
 }
 th {
-    background: rgba(37, 77, 57, 0.36);
+    background: rgba(37, 77, 57, 0.56);
     font-size: 2rem;
     color: #4ed5c0;
 }
 td{
-    background: rgba(162, 133, 78, 0.29);
+    background: rgba(162, 133, 78, 0.8);
     font-size: 1rem;
     padding:10px;
     text-align: center;
@@ -48,6 +62,7 @@ td{
 h1 {
     color: #5475d0;
     font-size: 4rem;
+    text-shadow: 0.5px 1px rgba(245, 245, 245, 0.88);
 }
 @keyframes loading-animation {
     to {
@@ -56,7 +71,7 @@ h1 {
 }
 </style>
 <body>
-<h1>Star Wars Api</h1>
+<h1>Star Wars </h1>
 <div class="message"></div>
 <table class="info">
     <tr>
@@ -137,7 +152,7 @@ h1 {
          infoDiv.innerHTML+= `
                  <tr>
                     <td><div class="name">${person.name}</div></td>
-                   <td> <div class="hair">${person.hair}</div></td>
+                   <td><div class="hair">${person.hair}</div></td>
                     <td><div class="height">${person.height}</div></td>
                    <td> <div class="planet-name">${person.planet.name}</div></td>
                    <td> <div class="planet-population">${person.planet.population}</div></td>
