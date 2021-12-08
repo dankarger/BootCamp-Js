@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>29.1</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <link rel="stylesheet" href="">
+</head>
+<body>
+
+<script>
+   // async function getIDs () {
+   //    await new Promise((resolve, reject) => {
+   //         setTimeout(() => {
+   //             resolve([532, 543, 753, 1, 5]);
+   //         }, 1500);
+   //     });
+   // async function getRecipe(recipeID) {
+   //         return new Promise((resolve, reject) => {
+   //             setTimeout((ID) => {
+   //                     const recipe = {
+   //                         title: "Fresh tomato pasta", publisher: "Pinchas Hodadad",
+   //                     };
+   //                     resolve(`${ID}: ${recipe.title}`);
+   //                 },
+   //                 1500,
+   //                 recipeID);
+   //         });
+   //     };
+   //
+   // }
+   //
+   //  await getIDs()
+   //      await ((IDs) => {
+   //      console.log(IDs);
+   //      return await getRecipe(IDs[2]); })
+   //  await ((recipe) => { console.log(recipe);
+   //      })
+   //      .catch((error) => {
+   //          console.log("It is an error!"); });
+   const getIDs = () =>
+       new Promise((resolve, reject) => {
+           setTimeout(() => { resolve([532, 543, 753, 1, 5]);
+           }, 1500); });
+
+
+   const getRecipe = (recipeID) => {
+       return new Promise((resolve, reject) => {
+           setTimeout( (ID) => {
+                   const recipe = {
+                       title: "Fresh tomato pasta", publisher: "Pinchas Hodadad",
+                   };
+                   resolve(`${ID}: ${recipe.title}`); },
+               1500,
+               recipeID );
+       }); };
+
+   getIDs() .then((IDs) => {
+       console.log(IDs);
+       return getRecipe(IDs[2]); })
+       .then((recipe) => { console.log(recipe);
+       })
+       .catch((error) => {
+           console.log("It is an error!"); });
+
+
+   async function getAsyncId(){
+       try{
+       const ids = await getIDs();
+       const recipe = await getRecipe(ids[2]);
+       console.log(recipe)
+       }
+       catch{
+
+               console.log('error');
+       }
+   }
+   getAsyncId()
+</script>
+</body>
+</html>
