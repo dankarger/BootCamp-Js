@@ -5,6 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <title>30.1</title>
     <style>
     body {
@@ -16,33 +17,79 @@
         justify-content: center;
         align-items: center;
         flex-direction: column;
+        font-family: Roboto,sans-serif;
+        font-weight: 200;
+        color:cadetblue;
+    }
+    h1{
+        font-size: 4rem;
+    }
+    .message{
+        color:red;
+        font-size: 2rem;
+    }
+    .input-div {
+        border-radius:10px;
+        border:2px solid whitesmoke;
+        padding:1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    label{
+        color:whitesmoke;
+        font-size: 2rem;
+        margin-right: 1rem;
+    }
+    button{
+        background: #aeaede;
+        margin:0 1rem ;
+    }
+    .cards-div{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
     }
     .card {
-
+        width:9rem;
+        margin:1rem;
+    border:2px white solid;
+        background: rgba(23, 22, 22, 0.62);
+        color:whitesmoke;
+        border-radius: 20px;
+        padding:1rem;
     }
     .card img {
-        width:3rem;
-        height: 3rem;
+        width:100%;
+        height: 30%;
         object-fit: cover;
+    }
+    .card p{
+
     }
     </style>
 </head>
 <body>
+<h1>GitHub Users Search</h1>
 <div class="input-div">
     <label for="input-name">Enter Name of user</label>
     <input id="input-name" type="text">
     <button type="submit">Search</button>
+    <div class="message"></div>
 </div>
 <div class="cards-div">
-<div class="card">
-    <div class="img-div">
-        <img src="" alt="">
-    </div>
-    <h3 class="name"></h3>
-    <h3 class="number-repo"></h3>
-</div>
+<!--<div class="card">-->
+<!--    <div class="img-div">-->
+<!--        <img src="" alt="">-->
+<!--    </div>-->
+<!--    <h3 class="name"></h3>-->
+<!--    <h3 class="number-repo"></h3>-->
+<!--</div>-->
 </div>
 <script>
+
 
     const URL = 'https://api.github.com/users/'
     const button = document.querySelector('button')
@@ -50,37 +97,53 @@
     let cardName = document.querySelector('.name')
     let cardImg = document.querySelector('.img-div img')
     let cardNumber= document.querySelector('.number-repo')
-
+    const message= document.querySelector('.message')
     let cardsDiv = document.querySelector('.cards-div')
     let cardsList = []
 
 
        async function getGitHubUser(name) {
            try {
+               message.textContent =''
                const data = await (await fetch(URL + name)).json()
-                cardName.textContent = data.login;
-                cardImg.src = data.avatar_url
-                cardNumber.textContent = data.public_repos
 
+               if(data.message==="Not Found"){
+                   // console.log('f')
+                   // message.textContent = error
+                  throw new Error('User not Found')
+               }
 
-           } catch (err) {
-               console.log(err)
+               injectCard(data)
+           } catch  {
+               message.textContent = 'User not Found'
+               console.log(Error)
            }
-
        }
-
+    function injectCard(data) {
+        const name= data.login;
+        const imgSrc = data.avatar_url
+        const numberRepos = data.public_repos
+        const url = data.html_url
+        cardsDiv.innerHTML += `
+            <a href="${url}" target="_blank">
+            <div class="card">
+             <div class="img-div">
+             <img src="${imgSrc}" alt="avatar-img">
+            </div>
+             <p class="name">Name: ${name}</p>
+             <p class="number-repo">Number of Repos${numberRepos}</p>
+             </div>
+             </a>
+        `
+    }
   button.addEventListener('click',()=>{
-
-
       getGitHubUser(nameOfUser.value)
       nameOfUser.value = ''
   })
     nameOfUser.addEventListener('keyup',(event)=>{
-        console.log('e')
         if(event.key==='Enter') {
             getGitHubUser(nameOfUser.value)
             nameOfUser.value = ''
-
         }
     })
 </script>
