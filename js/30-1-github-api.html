@@ -51,6 +51,7 @@
         align-items: center;
         width: 100%;
         height: 100%;
+        flex-wrap: wrap;
     }
     .card {
         width:9rem;
@@ -107,7 +108,7 @@
                message.textContent =''
                const data = await (await fetch(URL + name)).json()
 
-               if(data.message==="Not Found"){
+               if(data.message==="Not Found"|| data.status==='404'){
                    // console.log('f')
                    // message.textContent = error
                   throw new Error('User not Found')
@@ -120,6 +121,12 @@
            }
        }
     function injectCard(data) {
+        console.log(cardsList)
+        if(cardsList.includes(data.login)){
+
+            message.textContent='this user is allready on screen'
+            return
+        }
         const name= data.login;
         const imgSrc = data.avatar_url
         const numberRepos = data.public_repos
@@ -135,6 +142,7 @@
              </div>
              </a>
         `
+        cardsList.push(data.login)
     }
   button.addEventListener('click',()=>{
       getGitHubUser(nameOfUser.value)
